@@ -34,4 +34,24 @@
 // console.log(num + 1.123 / 2);
 
 
-const isSkyBlue = true;
+const isSkyBlue = false;
+
+// if (isSkyBlue) {
+//     console.log("the sky is blue!");
+// }   else {
+//     console.log("the sky is .. not blue?");
+// }
+
+let greeding ;
+
+if (isSkyBlue) {
+    greeding = "it must be nice weather";
+} else {
+    greeding = "it must be bad weather";
+}
+ 
+console.log(greeding);
+
+
+
+
