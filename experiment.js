@@ -1,3 +1,5 @@
+// ---------------- Primitive Variables -----------------
+
 // const monthlyRent = 500;
 
 // let yearlyRent = monthlyRent * 12;
@@ -34,7 +36,9 @@
 // console.log(num + 1.123 / 2);
 
 
-const isSkyBlue = false;
+// --------------Konditions----------------
+
+// const isSkyBlue = false;
 
 // if (isSkyBlue) {
 //     console.log("the sky is blue!");
@@ -42,16 +46,31 @@ const isSkyBlue = false;
 //     console.log("the sky is .. not blue?");
 // }
 
-let greeding ;
+// let greeding ;
 
-if (isSkyBlue) {
-    greeding = "it must be nice weather";
-} else {
-    greeding = "it must be bad weather";
-}
+// if (isSkyBlue) {
+//     greeding = "it must be nice weather";
+// } else {
+//     greeding = "it must be bad weather";
+// }
  
-console.log(greeding);
+// console.log(greeding);
+
+
+// if (2 + 2 === 4) {
+//     console.log ("hooray! Math still works") 
+// } else {
+//     console.log("uh.panic?");
+// }
 
 
 
+const frinendsatYourParty = 3;
 
+if (frinendsatYourParty === 0) {
+    console.log("Cool. now I have all the nachos to myself");
+} else if (frinendsatYourParty <= 4) {
+    console.log("Amount to play some Mario Kart");
+} else {
+    console.log("Woooooo. play the dance  music");
+}
