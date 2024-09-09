@@ -342,27 +342,69 @@
 // console.log(Object.keys(courses[0]));
 
 
-// ---------------------------------------
+// --------------------------------------- Foreach --------
 
-const cities = [
-    "Seattle",
-    "San Francisco",
-    "Salt Lake City",
-    "Amsterdam",
-    "Hong Kong"
-  ];
+// const cities = [
+//     "Seattle",
+//     "San Francisco",
+//     "Salt Lake City",
+//     "Amsterdam",
+//     "Hong Kong"
+//   ];
   
-//   // method 1
-//   for (let i = 0; i < cities.length; i++) {
-//     console.log(cities[i]);
-//   }
+// //   // method 1
+// //   for (let i = 0; i < cities.length; i++) {
+// //     console.log(cities[i]);
+// //   }
   
-  // method 2
-  cities.forEach(function(i) {
-    console.log(i);
-  });
+//   // method 2
+//   cities.forEach(function(i) {
+//     console.log(i);
+//   });
 
-  const someFunction = function() { return 5 };
-  const someOtherFunction = function(lol) {return lol() };
+//   const someFunction = function() { return 5 };
+//   const someOtherFunction = function(lol) {return lol() };
 
-  console.log(someOtherFunction(someFunction));
+//   console.log(someOtherFunction(someFunction));
+
+
+// const primeNumbers = [10, 1, 2, 4, 5,3, 33,11, 17];
+
+// console.log(primeNumbers.sort(function(num1, num2) {
+//     if (num1 < num2) {
+//         return 1;
+//     } else if (num2 < num1) {
+//         return -1;
+//     }
+//     return 0;
+//    }
+// ));
+
+
+// const alphabets = ["a", "z", "d","t", "P" ]
+
+// // console.log(alphabets.map(function(i) {return i.toLowerCase()}).sort());
+
+// console.log(alphabets.map(i => i.toUpperCase()).sort());
+
+
+// ----------------------- and or statement ------------------
+
+const x = 5;
+const y = 10;
+const z = 11;
+
+const isTrue = true;
+
+
+if (x !== y) {
+    console.log("these are not equal");
+}
+
+if (x === y && (y === z)) {
+    console.log("these are all equal");
+}
+
+if (isTrue || (x===z && y === z)) {
+    console.log("this is an or statement")
+}
