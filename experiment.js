@@ -183,101 +183,186 @@
 
 // -------------- Objects ---------------- 
 
-const person = {
-    name: "Burak Celik",
-    city: "Seattle",
-    state: "WA",
-    favoriteFood: "🌮",
-    wantsTacosRightNow: true,
-    numberOfTacosWanted: 100
-  };
-  console.log(person);
-  console.log(person.name);
-  console.log(person["name"]); // same as the line above; definitely prefer using the other one
+// const person = {
+//     name: "Burak Celik",
+//     city: "Seattle",
+//     state: "WA",
+//     favoriteFood: "🌮",
+//     wantsTacosRightNow: true,
+//     numberOfTacosWanted: 100
+//   };
+//   console.log(person);
+//   console.log(person.name);
+//   console.log(person["name"]); // same as the line above; definitely prefer using the other one
 
 // ----------------------------------------------------
 
-  const person1 = {
-    name: "burak",
-    ageRange: "25-35"
-  };
-  const person2 = {
-    name: "seda",
-    ageRange: "65-75"
-  };
+//   const person1 = {
+//     name: "burak",
+//     ageRange: "25-35"
+//   };
+//   const person2 = {
+//     name: "seda",
+//     ageRange: "65-75"
+//   };
   
-  function suggestMusic(person) {
-    if (person.ageRange === "25-35") {
-      console.log("We think you'll like Daft Punk you crazy millenial.");
-    } else if (person.ageRange === "65-75") {
-      console.log(
-        "You're obviously going to like Johnny Cash. He walks the line."
-      );
-    } else {
-      console.log(
-        "Uh, maybe try David Bowie? Everyone likes David Bowie, right?"
-      );
-    }
-  }
+//   function suggestMusic(person) {
+//     if (person.ageRange === "25-35") {
+//       console.log("We think you'll like Daft Punk you crazy millenial.");
+//     } else if (person.ageRange === "65-75") {
+//       console.log(
+//         "You're obviously going to like Johnny Cash. He walks the line."
+//       );
+//     } else {
+//       console.log(
+//         "Uh, maybe try David Bowie? Everyone likes David Bowie, right?"
+//       );
+//     }
+//   }
   
-  suggestMusic(person1);
-  suggestMusic(person2);
+//   suggestMusic(person1);
+//   suggestMusic(person2);
 
 //   --------------------------------------------------
 
-  const dog = {
-    name: "dog",
-    speak() {
-      console.log("woof woof");
-    }
-  };
+//   const dog = {
+//     name: "dog",
+//     speak() {
+//       console.log("woof woof");
+//     }
+//   };
   
-  dog.speak();
+//   dog.speak();
 
 //   ----------------------------------------------------
 
-const mee = {
-    name: {
-      first: "Brian",
-      last: "Holt"
-    },
-    location: {
-      city: "Seattle",
-      state: "WA",
-      country: "USA"
-    }
-  };
+// const mee = {
+//     name: {
+//       first: "Brian",
+//       last: "Holt"
+//     },
+//     location: {
+//       city: "Seattle",
+//       state: "WA",
+//       country: "USA"
+//     }
+//   };
   
-  console.log(mee);
+//   console.log(mee);
 
 
 //   ---------------------------------------------------
 
-const me = {
-    name: {
-      first: "Brian",
-      last: "Holt"
-    },
-    location: {
-      streetNumber: 500,
-      street: "Fakestreet",
-      city: "Seattle",
-      state: "WA",
-      zipCode: 55555,
-      country: "USA"
-    },
-    getAddress() {
-      return `${this.name.first} ${this.name.last}
-  ${this.location.streetNumber} ${this.location.street}
-  ${this.location.city}, ${this.location.state} ${this.location.zipCode}
-  ${this.location.country}`;
-    }
-  };
+// const me = {
+//     name: {
+//       first: "Brian",
+//       last: "Holt"
+//     },
+//     location: {
+//       streetNumber: 500,
+//       street: "Fakestreet",
+//       city: "Seattle",
+//       state: "WA",
+//       zipCode: 55555,
+//       country: "USA"
+//     },
+//     getAddress() {
+//       return `${this.name.first} ${this.name.last}
+//   ${this.location.streetNumber} ${this.location.street}
+//   ${this.location.city}, ${this.location.state} ${this.location.zipCode}
+//   ${this.location.country}`;
+//     }
+//   };
   
-  console.log(me.getAddress());
+//   console.log(me.getAddress());
 
-  me.name.first = "niki"
+//   me.name.first = "niki"
 
-  console.log(me.name)
+//   console.log(me.name)
 
 //   ------------------- Arrays ---------------------------
+
+// const daysOfTheWeek = [
+//     "Monday",
+//     "Tuesday",
+//     "Wednesday",
+//     "Thursday",
+//     "Friday",
+//     "Saturday",
+//     "Sunday"
+//   ];
+//   console.log(daysOfTheWeek);
+//   console.log(daysOfTheWeek[0]);
+//   console.log(daysOfTheWeek[1]);
+//   console.log(daysOfTheWeek[6]);
+
+
+//   const primeNumbers = [1, 2, 3, 5, 7, 11, 13, 17];
+// console.log(primeNumbers.length);
+// console.log(primeNumbers.join(" Hello "));
+
+
+
+// const courses = [
+//     { teacher: "Kyle Simpson", course: "JS Function Lite" },
+//     { teacher: "Sarah Drasner", course: "Intro to Vue" },
+//     { teacher: "Brian Holt", course: "Complete Intro to React v5" },
+//     { teacher: "Steve Kinney", course: "State Management" }
+//   ];
+  
+//   courses.push({ teacher: "Sean Larkin", course: "Webpack" });
+
+//   const course = courses.pop();
+//   console.log(course);
+
+
+  
+//   console.log(courses);
+  
+//   courses[2] = { teacher: "Brian Holt", course: "Complete Intro to React v4" };
+  
+//   console.log(courses);
+
+// const subarray = courses.splice(2, 2, {course: "intro to geometry"});
+
+// console.log(subarray);
+// console.log(courses);
+
+// courses[0].courseTime = 17;
+
+// console.log(courses);
+// courses[4] = true;
+// console.log(courses);
+
+// courses.pop();
+// console.log(courses);
+
+// console.log(Object.keys(courses[1]));
+
+// console.log(Object.keys(courses[0]));
+
+
+// ---------------------------------------
+
+const cities = [
+    "Seattle",
+    "San Francisco",
+    "Salt Lake City",
+    "Amsterdam",
+    "Hong Kong"
+  ];
+  
+//   // method 1
+//   for (let i = 0; i < cities.length; i++) {
+//     console.log(cities[i]);
+//   }
+  
+  // method 2
+  cities.forEach(function(i) {
+    console.log(i);
+  });
+
+  const someFunction = function() { return 5 };
+  const someOtherFunction = function(lol) {return lol() };
+
+  console.log(someOtherFunction(someFunction));
