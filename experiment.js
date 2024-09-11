@@ -390,21 +390,21 @@
 
 // ----------------------- and or statement ------------------
 
-const x = 5;
-const y = 10;
-const z = 11;
+// const x = 5;
+// const y = 10;
+// const z = 11;
 
-const isTrue = true;
+// const isTrue = true;
 
 
-if (x !== y) {
-    console.log("these are not equal");
-}
+// if (x !== y) {
+//     console.log("these are not equal");
+// }
 
-if (x === y && (y === z)) {
-    console.log("these are all equal");
-}
+// if (x === y && (y === z)) {
+//     console.log("these are all equal");
+// }
 
-if (isTrue || (x===z && y === z)) {
-    console.log("this is an or statement")
-}
+// if (isTrue || (x===z && y === z)) {
+//     console.log("this is an or statement")
+// }
