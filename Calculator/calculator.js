@@ -12,9 +12,24 @@ function buttonClick(value) {
         // this is a number
         handleNumber(value);
     }
+    screen.innerText = buffer;
 }
 
-function handleSymbol(symbol) {}
+function handleSymbol(symbol) {
+    switch (symbol) {
+        case "C":
+            buffer = "0";
+            runningTotal = 0;
+            break;     
+        case "+":
+        case "-":
+        case "&divide;":
+        case "&times;":
+            handleMath(symbol);
+            break;
+
+    }
+}
 
 function handleNumber(numberString) {
         if (buffer === "0") {
@@ -22,7 +37,6 @@ function handleNumber(numberString) {
         } else {
             buffer += numberString;
         }
-        screen.innerText = buffer;
     }
 
 function init () {
