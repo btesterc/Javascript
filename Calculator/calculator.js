@@ -1,6 +1,6 @@
 let runningTotal = 0;
 let buffer = "0";
-let priviousOperator;
+let priviousOperator = null;
 
 const screen = document.querySelector(".screen");
 
@@ -21,13 +21,59 @@ function handleSymbol(symbol) {
             buffer = "0";
             runningTotal = 0;
             break;     
+        case "=":
+            if (priviousOperator === null) {
+                // you need two numbers
+                return;
+            }
+            flushOperation(parseInt(buffer));
+            previousOperator = null;
+            buffer = runningTotal;
+            runningTotal = 0;
+            break;
+        case "←":
+            if (buffer.length === 1) {
+                buffer = "0";
+            } else {
+                buffer = buffer.substring(0, buffer.length - 1);
+            }
+            break;
         case "+":
         case "-":
-        case "&divide;":
-        case "&times;":
+        case "÷":
+        case "×":
             handleMath(symbol);
             break;
+    }
+}
 
+function handleMath(symbol) {
+    if (buffer === "0") {
+        // do nothing
+        return;
+    }
+    const intBuffer = parseInt(buffer);
+
+    if (runningTotal === 0) {
+        runningTotal = intBuffer;
+    } else {
+        flushOperation(intBuffer);
+    }
+
+    priviousOperator = symbol;
+
+    buffer = "0";
+}
+
+function flushOperation(intBuffer) {
+    if (priviousOperator === "+") {
+        runningTotal += intBuffer;        
+    } else if (priviousOperator === "-") {
+        runningTotal -= intBuffer;
+    } else if (priviousOperator === "×") {
+        runningTotal *= intBuffer;
+    } else {
+        runningTotal /= intBuffer;
     }
 }
 
