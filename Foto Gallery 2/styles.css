@@ -74,5 +74,6 @@ body {
     margin: 0;
     font-size: 50px;
     cursor: grab;
+    cursor: -webkit-grab;
     z-index: 10;
 }
