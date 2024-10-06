@@ -16,8 +16,15 @@
     transform: scale(0);
     transition: transform 200ms;
     margin-left: auto;
+    font-size: 30px !important;
 }
 
 .shopping-list li:hover .delete-icon {
     transform: scale(1);
+}
+
+.shopping-list li[item-completed] .item-name {
+    text-decoration: line-through;
+    color: #999;
+
 }
