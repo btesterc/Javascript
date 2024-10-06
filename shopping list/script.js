@@ -1,14 +1,12 @@
 
-const shoppingList = document.querySelector(".shopping-list")
-
-
+const shoppingList = document.querySelector(".shopping-list");
+const shopppingForm = document.querySelector(".shopping-form");
+loadItems();
+shopppingForm.addEventListener("submit", handleFormSubmit);
 
 function loadItems() {
     const items = [
-        {id:1, name: "Eggs", completed: false},
-        {id:2, name: "Fish", completed: true},
-        {id:3, name: "Milk", completed: false},
-        {id:4, name: "Olive", completed: true}
+
     ];
 
     shoppingList.innerHTML = "";
@@ -17,6 +15,37 @@ function loadItems() {
         const li = createListItem(item);
         shoppingList.appendChild(li);
     }
+}
+
+function addItem(input) {
+    const id = generateId();
+    console.log(id);
+    const newItem = createListItem({
+        id: id,
+        name: input.value,
+        completed: false
+    })
+
+    shoppingList.prepend(newItem);
+    input.value = "";
+}
+
+function generateId () {
+    return Date.now().toString();
+}
+
+
+function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    const input = document.getElementById("item-name");
+
+    if (input.value.trim().length === 0) {
+        alert("yeni değer giriniz");
+        return;
+    }
+
+    addItem(input);
 }
 
 
@@ -46,7 +75,6 @@ function createListItem (item) {
 
 }
 
-loadItems();
 
 
 
