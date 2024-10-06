@@ -24,7 +24,7 @@
 }
 
 .shopping-list li[item-completed] .item-name {
-    text-decoration: line-through;
+    text-decoration: line-through !important;
     color: #999;
 
 }
