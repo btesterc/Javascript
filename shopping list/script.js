@@ -2,23 +2,57 @@
 const shoppingList = document.querySelector(".shopping-list");
 const shopppingForm = document.querySelector(".shopping-form");
 const filterButtons = document.querySelectorAll(".filter-buttons button");
-
+const clearBtn = document.querySelector(".clear");
 
 document.addEventListener("DOMContentLoaded", function (){
     loadItems();
+
+    displayAlert()
     shopppingForm.addEventListener("submit", handleFormSubmit); 
 
     for (let button of filterButtons){
         button.addEventListener("click", handleFilterSelection);
     }
+    clearBtn.addEventListener("click", clear);
 })
+
+function clear() {
+    shoppingList.innerHTML = "";
+    localStorage.clear("shoppingItems");
+    displayAlert();
+}
+
+function displayAlert() {
+    const isEmpty = shoppingList.querySelectorAll("li").length === 0 ;
+
+    const alert = document.querySelector(".alert");
+    const filterBtns = document.querySelector(".filter-buttons");
+
+    alert.classList.toggle("d-none", !isEmpty);
+    clearBtn.classList.toggle("d-none", isEmpty);
+    filterBtns.classList.toggle("d-none", isEmpty);
+
+
+}
+
+function saveToLS () {
+    const listItems = document.querySelectorAll("li");
+    const list = [];
+    for (let li of listItems) {
+        const id = li.getAttribute("item-id");
+        const name = li.querySelector(".item-name").textContent;
+        const completed = li.hasAttribute("item-completed");
+
+        list.push({id: id, name: name, completed:completed})
+    }
+
+    localStorage.setItem("shoppingItems", JSON.stringify(list));
+}
 
 
 
 function loadItems() {
-    const items = [
-
-    ];
+    const items = JSON.parse(localStorage.getItem("shoppingItems")) || [];
 
     shoppingList.innerHTML = "";
 
@@ -40,6 +74,9 @@ function addItem(input) {
     input.value = "";
 
     updateFilteredItems();
+    saveToLS ()
+    displayAlert()
+
 }
 
 function generateId () {
@@ -65,6 +102,7 @@ function toggleCompleted (e) {
     li.toggleAttribute("item-completed", e.target.checked);
 
     updateFilteredItems();
+    saveToLS ()
 }
 
 
@@ -91,6 +129,7 @@ function createListItem (item) {
 
 
     const li = document.createElement("li");
+    li.setAttribute("item-id", item.id);
     li.className = "border round p-2 mb-1";
     li.toggleAttribute("item-completed", item.completed);
 
@@ -106,6 +145,8 @@ function createListItem (item) {
 function removeItem (e) {
     const li = e.target.parentElement;
     shoppingList.removeChild(li);
+    saveToLS ()
+    displayAlert()
 }
 
 function openEditMode(e){
@@ -113,6 +154,7 @@ function openEditMode(e){
     if(li.hasAttribute("item-completed") == false){
         e.target.contentEditable = true;
     }
+    saveToLS ()
 }
 
 function closeEditMode(e){
