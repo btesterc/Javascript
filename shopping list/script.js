@@ -30,7 +30,6 @@ function loadItems() {
 
 function addItem(input) {
     const id = generateId();
-    console.log(id);
     const newItem = createListItem({
         id: id,
         name: input.value,
@@ -39,6 +38,8 @@ function addItem(input) {
 
     shoppingList.prepend(newItem);
     input.value = "";
+
+    updateFilteredItems();
 }
 
 function generateId () {
@@ -61,7 +62,9 @@ function handleFormSubmit(e) {
 
 function toggleCompleted (e) {
     const li = e.target.parentElement;
-    li.toggleAttribute("item-completed", e.target.checked)
+    li.toggleAttribute("item-completed", e.target.checked);
+
+    updateFilteredItems();
 }
 
 
@@ -133,7 +136,35 @@ function handleFilterSelection(e) {
     
     filterBtn.classList.add("btn-primary");
     filterBtn.classList.remove("btn-secondary");
+
+    filterItems(filterBtn.getAttribute("item-filter"));
+    
+}
+
+function filterItems(filterType) {
+    const li_items = shoppingList.querySelectorAll("li");
+
+    for (let li of li_items){
+        li.classList.remove("d-flex");
+        li.classList.remove("d-none");
+    
+        const item_completed = li.hasAttribute("item-completed");
+
+        if (filterType == "completed"){
+            li.classList.toggle(item_completed ? "d-flex":"d-none");
+        } else if (filterType == "incompleted") {
+            li.classList.toggle(item_completed ? "d-none":"d-flex");
+        }else {
+            li.classList.toggle("d-flex");
+        }
+}
+
 }
 
 
+function updateFilteredItems() {
+    const activeFilter = document.querySelector(".btn-primary[item-filter]");
+
+    filterItems(activeFilter.getAttribute("item-filter"))   
+}
 
