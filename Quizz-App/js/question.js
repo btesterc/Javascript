@@ -18,4 +18,3 @@ const questionList = [
 ]
 
 
-console.log(questionList[0].control("c"))
