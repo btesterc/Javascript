@@ -7,15 +7,26 @@ const questionList = [
 const quiz = new Quiz(questionList);
 const ui = new UI();
 
+ui.btnStart.addEventListener("click", function(){
+    ui.quizBox.classList.add("active");
+    ui.buttonBox.classList.remove("active");
+    ui.showQuestion(quiz.currentQuestion());
+    ui.questionNumber(quiz.questionIndex + 1, quiz.questions.length)
+
+})
+
+
 ui.btnNext.addEventListener('click', function() {
     if(quiz.questions.length != quiz.questionIndex){
         ui.showQuestion(quiz.currentQuestion());
         ui.questionNumber(quiz.questionIndex + 1, quiz.questions.length)
        
     } else {
-        console.log("quiz finished")
+        ui.quizBox.classList.remove("active")
+        ui.scoreBox.classList.add("active"); 
+        ui.showBildboard(quiz.correctAnswer, quiz.questions.length);
     }
-})
+});
 
 
 function optionSelected(e) {
@@ -41,5 +52,18 @@ function optionSelected(e) {
     quiz.questionIndex += 1;
 
     ui.disableAlloption()
-}
+};
 
+
+
+ui.btnQuit.addEventListener("click", function(){
+    window.location.reload()
+});
+
+ui.btnReplay.addEventListener("click", function(){
+    quiz.questionIndex = 0;
+    quiz.correctAnswer = 0;
+    
+    ui.btnStart.click()
+    ui.scoreBox.classList.remove("active");
+});

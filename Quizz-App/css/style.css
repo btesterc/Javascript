@@ -61,9 +61,21 @@
     margin-bottom: 10px;
 }
 
-#score-box  .score-text {
+#score-box .score-text {
     font-size: 10px;
     font-weight: 500;
     margin-bottom: 10px;
 }
 
+#button-box {
+    text-align: center;
+}
+
+
+#button-box, #quiz-box, #score-box {
+    display: none;
+}
+
+#button-box.active, #quiz-box.active, #score-box.active {
+    display: block;
+}

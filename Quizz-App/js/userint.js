@@ -1,10 +1,15 @@
 function UI() {
-    this.quiz_box = document.querySelector("#quiz-box")
-    this.body = document.querySelector("#quiz-box #body")
+    this.quizBox = document.querySelector("#quiz-box");
+    this.buttonBox = document.querySelector("#button-box");
+    this.scoreBox = document.querySelector("#score-box");
+    this.body = document.querySelector("#quiz-box #body");
     this.correctIcon = "<i class='bi bi-check-circle'></i>";
     this.inCorrectIcon = "<i class='bi bi-x-circle'></i>";
-    this.btnNext = document.querySelector(".btn-next")
-}
+    this.btnStart = document.querySelector(".btn-start")
+    this.btnNext = document.querySelector(".btn-next");
+    this.btnReplay = document.querySelector(".btn-replay");
+    this.btnQuit = document.querySelector(".btn-quit"); 
+};
 
 UI.prototype.showQuestion = function(question) {
     
@@ -42,7 +47,7 @@ UI.prototype.showQuestion = function(question) {
 
     this.body.appendChild(cardBody);
 
-}
+};
 
 
 UI.prototype.disableAlloption = function() {
@@ -50,11 +55,17 @@ UI.prototype.disableAlloption = function() {
     for (let option of options) {
         option.classList.add("disabled");
     }
-}
+};
 
 
 UI.prototype.questionNumber = function(questionNumber, TotalNumberOfQuestions) {
     const bild = `<span class="badge text-bg-danger">${questionNumber} / ${TotalNumberOfQuestions}</span>`;
 
     document.querySelector(".question-index").innerHTML = bild;
+};
+
+
+UI.prototype.showBildboard = function(correctAnswer, TotalNumberOfQuestions) {
+    const bild = `Number of questions: ${TotalNumberOfQuestions}, correct answers: ${correctAnswer}`;
+    document.querySelector(".score-text").innerHTML = bild;
 }
