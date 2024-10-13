@@ -1,9 +1,12 @@
 function UI() {
     this.quiz_box = document.querySelector("#quiz-box")
     this.body = document.querySelector("#quiz-box #body")
+    this.correctIcon = "<i class='bi bi-check-circle'></i>";
+    this.inCorrectIcon = "<i class='bi bi-x-circle'></i>";
+    this.btnNext = document.querySelector(".btn-next")
 }
 
-UI.prototype.showQuestion = function (question) {
+UI.prototype.showQuestion = function(question) {
     
     // ----- show content which brought by question js -----
 
@@ -24,6 +27,7 @@ UI.prototype.showQuestion = function (question) {
     for (let [key, value] of Object.entries(question.answers)) {
         const option = document.createElement("div");
         option.classList.add("option");
+        option.addEventListener("click", optionSelected);
 
         const span = document.createElement("span");
         span.textContent = key + ") " + value;
@@ -38,4 +42,19 @@ UI.prototype.showQuestion = function (question) {
 
     this.body.appendChild(cardBody);
 
+}
+
+
+UI.prototype.disableAlloption = function() {
+    const options = document.querySelectorAll(".option");
+    for (let option of options) {
+        option.classList.add("disabled");
+    }
+}
+
+
+UI.prototype.questionNumber = function(questionNumber, TotalNumberOfQuestions) {
+    const bild = `<span class="badge text-bg-danger">${questionNumber} / ${TotalNumberOfQuestions}</span>`;
+
+    document.querySelector(".question-index").innerHTML = bild;
 }
