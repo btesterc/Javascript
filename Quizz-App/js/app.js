@@ -8,18 +8,22 @@ const quiz = new Quiz(questionList);
 const ui = new UI();
 
 ui.btnStart.addEventListener("click", function(){
+    startTimer(10);
     ui.quizBox.classList.add("active");
     ui.buttonBox.classList.remove("active");
     ui.showQuestion(quiz.currentQuestion());
-    ui.questionNumber(quiz.questionIndex + 1, quiz.questions.length)
+    ui.questionNumber(quiz.questionIndex + 1, quiz.questions.length);
+    ui.btnNext.classList.remove("show");
 
 })
 
 
 ui.btnNext.addEventListener('click', function() {
     if(quiz.questions.length != quiz.questionIndex){
+        startTimer(10);
         ui.showQuestion(quiz.currentQuestion());
         ui.questionNumber(quiz.questionIndex + 1, quiz.questions.length)
+        ui.btnNext.classList.remove("show")
        
     } else {
         ui.quizBox.classList.remove("active")
@@ -30,10 +34,9 @@ ui.btnNext.addEventListener('click', function() {
 
 
 function optionSelected(e) {
+    clearInterval(counter);
     let selectedElement = e.target;
 
-    console.log(selectedElement)
-    console.log(e)
     if (selectedElement.nodeName === "SPAN") {
         selectedElement = selectedElement.parentElement;
     }
@@ -50,8 +53,8 @@ function optionSelected(e) {
     }
 
     quiz.questionIndex += 1;
-
     ui.disableAlloption()
+    ui.btnNext.classList.add("show")
 };
 
 
@@ -67,3 +70,21 @@ ui.btnReplay.addEventListener("click", function(){
     ui.btnStart.click()
     ui.scoreBox.classList.remove("active");
 });
+
+
+let counter;
+function startTimer(time) {
+    counter = setInterval(timer, 1000); 
+
+    function timer () {
+    ui.timeSecond.textContent = time
+      time--
+      
+      if(time < 0) {
+        clearInterval(counter);
+        ui.disableAlloption()
+        quiz.questionIndex += 1;
+        ui.btnNext.classList.add("show")
+      }
+    }
+}
