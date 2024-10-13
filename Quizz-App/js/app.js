@@ -9,6 +9,7 @@ const ui = new UI();
 
 ui.btnStart.addEventListener("click", function(){
     startTimer(10);
+    startTimerLine();
     ui.quizBox.classList.add("active");
     ui.buttonBox.classList.remove("active");
     ui.showQuestion(quiz.currentQuestion());
@@ -21,6 +22,7 @@ ui.btnStart.addEventListener("click", function(){
 ui.btnNext.addEventListener('click', function() {
     if(quiz.questions.length != quiz.questionIndex){
         startTimer(10);
+        startTimerLine()
         ui.showQuestion(quiz.currentQuestion());
         ui.questionNumber(quiz.questionIndex + 1, quiz.questions.length)
         ui.btnNext.classList.remove("show")
@@ -35,6 +37,7 @@ ui.btnNext.addEventListener('click', function() {
 
 function optionSelected(e) {
     clearInterval(counter);
+    clearInterval(counterline);
     let selectedElement = e.target;
 
     if (selectedElement.nodeName === "SPAN") {
@@ -78,13 +81,31 @@ function startTimer(time) {
 
     function timer () {
     ui.timeSecond.textContent = time
+
       time--
       
       if(time < 0) {
         clearInterval(counter);
-        ui.disableAlloption()
+        clearInterval(counterline);
+        ui.disableAlloption();
         quiz.questionIndex += 1;
         ui.btnNext.classList.add("show")
       }
+    }
+}
+
+let counterline;
+function startTimerLine () {
+    let lineWidth = 0;
+
+    counterline = setInterval(timer, 20);
+
+    function timer ( ) {
+        lineWidth += 1;
+        ui.timeLine.style.width = lineWidth + "px";
+
+        if (lineWidth > 549) {
+            clearInterval(counterLine);
+        }
     }
 }

@@ -10,7 +10,9 @@ function UI() {
     this.btnReplay = document.querySelector(".btn-replay");
     this.btnQuit = document.querySelector(".btn-quit"); 
     this.timeText = document.querySelector(".time-text");
-    this.timeSecond = document.querySelector(".time-second")
+    this.timeSecond = document.querySelector(".time-second");
+    this.timeLine = document.querySelector(".time-line");
+    
 };
 
 UI.prototype.showQuestion = function(question) {
